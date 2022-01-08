@@ -7,7 +7,7 @@ var con = mysql.createConnection({
   host: process.env.MYSQL_SERVER,
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
-  database: 'bucket',
+  database: 'bucket'
 })
 
 const getList = async (req, res, next) => {
@@ -29,7 +29,9 @@ const searchList = async (req, res, next) => {
     console.error('Error:', error)
   }
 }
-
+router.get('/', function (req, res, next) {
+  res.render('index', { title: 'Steven API Base 2022' })
+})
 router.get('/bucket', getList)
 router.get('/bucket/:search', searchList)
 
