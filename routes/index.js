@@ -8,6 +8,9 @@ router.get('/', function (req, res, next) {
 })
 
 router.get('/bucket', listController.getList)
-router.get('/bucket/:search', listController.searchList)
+// router.get('/bucket/search/:search', listController.searchList)
+
+router.get('/bucket/:id', listController.readMyList)
+router.post('/bucket/:id', listController.saveMyList)
 
 module.exports = router
