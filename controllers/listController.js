@@ -48,17 +48,16 @@ exports.searchList = async (req, res, next) => {
 
 exports.saveMyList = async (req, res) => {
   const uniqueID = req.params.id
+  const title = req.body.title
   const data = JSON.stringify(req.body.list)
-  // console.log('data: ', data)
 
   const queryText = `
-    INSERT INTO SavedList (id, list)
-    VALUES ('${uniqueID}', '${data}')
+    INSERT INTO SavedList (id, title, list)
+    VALUES ('${uniqueID}', '${title}', '${data}')
   `
 
   try {
     var result = await con.promise().query(queryText)
-    console.log('result: ', result)
     res.json(req.body)
   } catch (error) {
     console.error('Error:', error)
